@@ -1,0 +1,9 @@
+/* TEAM */
+Name: Muhammad Aqib
+Role: Software Engineer
+Location: Multan, Punjab, Pakistan
+GitHub: https://github.com/mrpythonist
+LinkedIn: https://www.linkedin.com/in/mrpythonist/
+
+/* SITE */
+Built with: PHP, HTML, CSS and vanilla JavaScript — no frameworks, no build step.

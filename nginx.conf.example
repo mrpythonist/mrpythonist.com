@@ -1,0 +1,36 @@
+# Nginx equivalent of .htaccess — adapt server_name / root / PHP-FPM socket.
+# This is an example, not a live server block.
+server {
+    listen 443 ssl http2;
+    server_name mrpythonist.com www.mrpythonist.com;
+    root /var/www/mrpythonist-portfolio;
+    index index.php;
+    error_page 404 /404.php;
+
+    # Canonical host + HTTPS
+    if ($host = www.mrpythonist.com) { return 301 https://mrpythonist.com$request_uri; }
+
+    location / {
+        try_files $uri $uri/ @clean;
+    }
+    location @clean {
+        rewrite ^/projects$ /projects.php last;
+        rewrite ^/contact$ /contact.php last;
+        return 404;
+    }
+    location ~ ^/(projects|contact)\.php$ {
+        return 301 /$1;
+    }
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+    }
+    location ~ ^/(includes|data)/ { deny all; }
+    location ~* \.(css|js|png)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    add_header X-Content-Type-Options nosniff;
+    add_header Referrer-Policy strict-origin-when-cross-origin;
+}
