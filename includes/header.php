@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
+
 // $page must be set by the calling page before including this file.
-// $active is the current nav key: home | projects | contact.
+// $active: home | projects | contact
 require_once __DIR__ . '/seo.php';
 ?>
 <!DOCTYPE html>
@@ -11,20 +12,66 @@ require_once __DIR__ . '/seo.php';
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="mrpythonist — home">mrpythonist</a>
-    <nav class="site-nav" aria-label="Primary">
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+
+    <a class="brand" href="/" aria-label="mrpythonist — home">
+      <span class="brand-symbol" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <rect x="1" y="1" width="38" height="38" rx="11"
+            stroke="currentColor" stroke-opacity=".35"/>
+          <path d="m14 14-6 6 6 6M26 14l6 6-6 6M23 11l-6 18"
+            stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="31" cy="9" r="2" fill="#A55704"/>
+        </svg>
+      </span>
+
+      <span class="brand-word">mrpythonist<span class="brand-period">.</span></span>
+      <span class="brand-caption">ENGINEERING WITH INTENTION</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-list"
+        aria-label="Open navigation menu">
+        <span class="nav-toggle-label">Menu</span>
+        <span class="nav-toggle-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
       <ul id="nav-list" class="nav-list">
-        <li><a href="/" <?= ($active ?? '') === 'home' ? 'aria-current="page"' : '' ?>>Home</a></li>
-        <li><a href="/projects" <?= ($active ?? '') === 'projects' ? 'aria-current="page"' : '' ?>>Projects</a></li>
-        <li><a href="/#tech-stack">Tech Stack</a></li>
-        <li><a href="/#experience">Experience</a></li>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/contact" <?= ($active ?? '') === 'contact' ? 'aria-current="page"' : '' ?>>Contact</a></li>
+        <li>
+          <a href="/"
+   <?= ($active ?? '') === 'home' ? 'aria-current="location"' : '' ?>>
+            <span>Home</span>
+          </a>
+        </li>
+        <li><a href="/#projects"><span>Projects</span></a></li>
+        <li><a href="/#tech-stack"><span>Tech Stack</span></a></li>
+        <li><a href="/#experience"><span>Experience</span></a></li>
+        <li><a href="/#about"><span>About</span></a></li>
       </ul>
     </nav>
+
+    <a class="header-contact"
+       href="/contact"
+       <?= ($active ?? '') === 'contact' ? 'aria-current="page"' : '' ?>>
+      <span>Let's talk</span>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 12h14m-6-6 6 6-6 6"
+          stroke="currentColor" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
   </div>
 </header>
+
 <main id="main">

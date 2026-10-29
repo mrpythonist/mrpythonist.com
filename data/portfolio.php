@@ -43,5 +43,6 @@ $experience = [
         'employer' => 'TurboDebt',
         'period' => 'March 2023 – October 2026',
         'description' => 'Full-stack and backend engineering work on production systems, APIs and infrastructure.',
+        'logo' => '/assets/images/turbo.png'
     ],
 ];
