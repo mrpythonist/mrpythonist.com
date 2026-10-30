@@ -3972,6 +3972,8 @@ a:hover {
   list-style: none;
 }
 
+
+
 .stack-list li {
   padding: .55rem 1rem;
   border: 1px solid var(--line);
@@ -3995,3 +3997,44 @@ a:hover {
     flex-direction: column;
   }
 }
+/* Sub-page additions — multi-page upgrade (2026-10-29).
+   Appended to the live stylesheet; uses the existing design tokens only. */
+.lede{color:var(--beige-dim);font-size:1.1rem;max-width:44rem;margin:.75rem 0 0}
+.breadcrumbs{padding:1.5rem 0 0}
+.breadcrumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;font-size:.88rem}
+.breadcrumbs li{display:flex;align-items:center;gap:.5rem}
+.breadcrumbs li+li::before{content:"/";color:var(--beige-dim)}
+.breadcrumbs a{color:var(--peach);text-decoration:none}
+.breadcrumbs a:hover{color:var(--beige)}
+.breadcrumbs [aria-current="page"] span{color:var(--beige-dim)}
+.prose{color:var(--beige-dim)}
+.prose h2{color:var(--beige);font-size:1.45rem;letter-spacing:-.01em;margin:2.25rem 0.75rem}
+.prose h3{color:var(--beige);font-size:1.15rem;margin:1.75rem 0.5rem}
+.prose p{margin:0 0 1rem}
+.prose ul,.prose ol{margin:0 0 1.25rem;padding-left:1.4rem}
+.prose li{margin:.4rem 0}
+.prose a{color:var(--peach)}
+.prose strong{color:var(--beige)}
+.prose code{font-family:var(--mono);font-size:.88em;background:var(--forest-2);border:1px solid var(--line);border-radius:6px;padding:.12rem.45rem;color:var(--beige)}
+.prose pre{background:var(--forest-2);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.25rem;overflow-x:auto;margin:0 0 1.5rem}
+.prose pre code{background:none;border:0;padding:0;font-size:.92rem}
+.level-badge{display:inline-block;background:var(--forest-2);border:1px solid var(--amber);color:var(--peach);border-radius:999px;padding:.3rem 1rem;font-size:.88rem;font-weight:600;margin-top:.75rem}
+.group-title{color:var(--beige);font-size:1.35rem;letter-spacing:-.01em;margin:2.5rem 0 1.1rem}
+.post-meta{color:var(--peach);font-size:.9rem;margin:0 0.4rem}
+.post-card h2{font-size:1.35rem;margin:.2rem 0.6rem;letter-spacing:-.01em}
+.post-card h2 a{color:var(--beige);text-decoration:none}
+.post-card h2 a:hover{color:var(--peach)}
+.post-card{margin-bottom:1.25rem}
+.post-header h1{font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:-.02em;margin:.5rem 0 1rem;line-height:1.15}
+.post-footer{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.contact-form{margin-top:1.5rem}
+.contact-form p{margin:0 0 1.1rem}
+.contact-form label{display:block;font-weight:600;color:var(--beige);margin-bottom:.4rem}
+.contact-form input[type="text"],.contact-form input[type="email"],.contact-form select,.contact-form textarea{width:100%;background:var(--forest-2);border:1px solid var(--line);border-radius:10px;color:var(--beige);font:inherit;padding:.7rem 1rem}
+.contact-form textarea{min-height:140px;resize:vertical}
+.honeypot{position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.form-success,.form-error{border-radius:10px;padding:1rem 1.25rem;margin:0 0 1.25rem;color:var(--beige)}
+.form-success{background:var(--forest-2);border:1px solid var(--amber)}
+.form-error{background:var(--forest-2);border:1px solid #b3402e}
+.form-error ul{margin:.5rem 0 0;padding-left:1.25rem}
+.form-error li{margin:.25rem 0}

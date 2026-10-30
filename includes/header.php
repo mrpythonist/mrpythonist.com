@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // $page must be set by the calling page before including this file.
-// $active: home | projects | contact
+// $active: home | about | experience | tech-stack | projects | blog | contact
 require_once __DIR__ . '/seo.php';
 ?>
 <!DOCTYPE html>
@@ -53,11 +53,12 @@ require_once __DIR__ . '/seo.php';
             <span>Home</span>
           </a>
         </li>
-        <li><a href="/#projects"><span>Projects</span></a></li>
-        <li><a href="/#tech-stack"><span>Tech Stack</span></a></li>
-        <li><a href="/#experience"><span>Experience</span></a></li>
-        <li><a href="/#about"><span>About</span></a></li>
-      </ul>
+        <li><a href="/about"<?= ($active?? '') === 'about'? ' aria-current="page"': ''?>><span>About</span></a></li>
+        <li><a href="/experience"<?= ($active?? '') === 'experience'? ' aria-current="page"': ''?>><span>Experience</span></a></li>
+        <li><a href="/tech-stack"<?= ($active?? '') === 'tech-stack'? ' aria-current="page"': ''?>><span>Tech Stack</span></a></li>
+        <li><a href="/projects"<?= ($active?? '') === 'projects'? ' aria-current="page"': ''?>><span>Projects</span></a></li>
+        <li><a href="/blog"<?= ($active?? '') === 'blog'? ' aria-current="page"': ''?>><span>Blog</span></a></li>
+          </ul>
     </nav>
 
     <a class="header-contact"

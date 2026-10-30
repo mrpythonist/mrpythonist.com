@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /includes/
 Disallow: /data/
+Disallow: /content/
 
 Sitemap: https://mrpythonist.com/sitemap.xml

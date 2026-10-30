@@ -2,6 +2,42 @@
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://mrpythonist.com/</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://mrpythonist.com/about</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/experience</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/services</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mrpythonist.com/projects</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://mrpythonist.com/resume</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/certifications</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/open-source</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/cloud</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/engineering-principles</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/uses</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/now</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/blog</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mrpythonist.com/contact</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/php</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/laravel</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/javascript</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/typescript</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/react</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/nextjs</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/nodejs</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/express</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/postgresql</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/mongodb</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/redis</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/docker</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/aws</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/linux</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/tech-stack/terraform</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/projects/food-delivery-system</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/projects/backend-engineering-api-systems</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/projects/cloud-devops-lab</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/blog/deploying-php-on-litespeed-shared-hosting</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/blog/clean-urls-mod-rewrite-shared-hosting</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/blog/cpanel-file-manager-http-406-modsecurity</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/blog/search-console-domain-verification-dns-txt</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/blog/php-shared-hosting-deployment-checklist</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mrpythonist.com/blog/triaging-production-incidents</loc><lastmod>2026-10-29</lastmod></url>
 </urlset>

@@ -40,10 +40,15 @@
           <nav aria-label="Footer navigation">
             <ul class="footer-nav">
               <li><a href="/"><span>Home</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/about"><span>About</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/experience"><span>Experience</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/tech-stack"><span>Tech stack</span><span aria-hidden="true">↗</span></a></li>
               <li><a href="/projects"><span>Projects</span><span aria-hidden="true">↗</span></a></li>
-              <li><a href="/#about"><span>About</span><span aria-hidden="true">↗</span></a></li>
-              <li><a href="/#tech-stack"><span>Tech stack</span><span aria-hidden="true">↗</span></a></li>
-              <li><a href="/#contact"><span>Contact</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/services"><span>Services</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/blog"><span>Blog</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/open-source"><span>Open source</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/resume"><span>Resume</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/contact"><span>Contact</span><span aria-hidden="true">↗</span></a></li>
             </ul>
           </nav>
         </div>

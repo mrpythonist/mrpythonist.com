@@ -8,7 +8,7 @@ const SITE_OWNER = 'Muhammad Aqib';
 const SITE_DOMAIN = 'mrpythonist.com';
 const SITE_URL = 'https://mrpythonist.com';
 const SITE_LOCALE = 'en';
-const ASSET_VERSION = '1';
+const ASSET_VERSION = '2';
 
 // Contact details verified from Aqib's existing mrpythonist.com site.
 // Do not add an address, phone number or form here without a real one.

@@ -59,6 +59,16 @@ function render_head(array $page): void
 ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TRYXJCJWRB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TRYXJCJWRB');
+</script>
 
     <title><?= e($title) ?></title>
     <meta name="description" content="<?= e($description) ?>">
