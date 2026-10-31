@@ -92,60 +92,7 @@ $active = 'contact';
 require __DIR__ . '/includes/header.php';
 render_breadcrumbs($trail);
 ?>
-<section class="page-head" aria-labelledby="page-title">
-  <div class="container narrow">
-    <h1 id="page-title">Contact</h1>
-    <p class="lede">Have a project in mind, a role to discuss, or just want to talk engineering? Send a message.</p>
-    <p style="margin-top:1.25rem;display:flex;gap:.75rem;flex-wrap:wrap">
-      <a class="btn btn-primary" href="#send-message">Discuss a project</a>
-      <a class="btn btn-secondary" href="mailto:<?= e(CONTACT_EMAIL) ?>">Email directly</a>
-    </p>
-  </div>
-</section>
-<section class="section" id="send-message" aria-label="Contact form">
-  <div class="container narrow">
-    <h2>Send a message</h2>
-    <?php if ($form_state === 'sent'): ?>
-      <p class="form-success" role="status">Thanks — your message was sent. I usually reply within a couple of days.</p>
-    <?php elseif ($form_state === 'error'): ?>
-      <p class="form-error" role="alert">The message could not be sent from the server. Please email me directly at <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a> instead — that always works.</p>
-    <?php endif; ?>
-    <?php if ($form_state === 'invalid'): ?>
-      <div class="form-error" role="alert">
-        <p>Please fix the following:</p>
-        <ul>
-          <?php foreach ($form_errors as $err): ?><li><?= e($err) ?></li><?php endforeach; ?>
-        </ul>
-      </div>
-    <?php endif; ?>
-    <form class="contact-form" method="post" action="/contact">
-      <input type="hidden" name="csrf" value="<?= e((string) $_SESSION['csrf']) ?>">
-      <p class="honeypot" aria-hidden="true">
-        <label>Leave this empty <input type="text" name="website" value="" tabindex="-1" autocomplete="off"></label>
-      </p>
-      <p>
-        <label for="cf-name">Name</label>
-        <input id="cf-name" name="name" type="text" required maxlength="100" autocomplete="name" value="<?= e($form_values['name']) ?>">
-      </p>
-      <p>
-        <label for="cf-email">Email</label>
-        <input id="cf-email" name="email" type="email" required maxlength="254" autocomplete="email" value="<?= e($form_values['email']) ?>">
-      </p>
-      <p>
-        <label for="cf-topic">I'm contacting about</label>
-        <select id="cf-topic" name="topic">
-          <?php foreach ($allowed_topics as $key => $label): ?>
-            <option value="<?= e($key) ?>"<?= $form_values['topic'] === $key ? ' selected' : '' ?>><?= e($label) ?></option>
-          <?php endforeach; ?>
-        </select>
-      </p>
-      <p>
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" required rows="6" maxlength="5000"><?= e($form_values['message']) ?></textarea>
-      </p>
-      <p><button class="btn btn-primary" type="submit">Send message</button></p>
-    </form>
-  </div>
-</section>
+
+
 <?php require __DIR__ . '/includes/contact-section.php'; ?>
 <?php require __DIR__ . '/includes/footer.php'; ?>

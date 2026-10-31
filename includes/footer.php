@@ -80,6 +80,18 @@
               </a>
             </li>
           </ul>
+
+          <p class="footer-label footer-sub-label">ENGINEERING &amp; NOTES</p>
+          <nav aria-label="Additional pages">
+            <ul class="footer-nav">
+              <li><a href="/cloud"><span>Cloud &amp; DevOps</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/certifications"><span>Certifications</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/engineering-principles"><span>Principles</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/uses"><span>Uses</span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="/now"><span>Now</span><span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </nav>
+          
         </div>
       </div>
     </div>
@@ -113,5 +125,13 @@
 </footer>
 
 <script src="<?= e(asset_url('js/main.js')) ?>" defer></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+});
+</script>
 </body>
 </html>
