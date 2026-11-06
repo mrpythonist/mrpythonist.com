@@ -1,0 +1,47 @@
+PHP syntax check - all PHP files - 2026-11-06 - PHP 8.3.6 CLI
+Command: find . -name "*.php" -not -path './.git/*' -exec php -l {} \;
+
+No syntax errors detected in ./404.php
+No syntax errors detected in ./about.php
+No syntax errors detected in ./blog-post.php
+No syntax errors detected in ./blog.php
+No syntax errors detected in ./certifications.php
+No syntax errors detected in ./cloud.php
+No syntax errors detected in ./contact.php
+No syntax errors detected in ./content/blog/clean-urls-mod-rewrite-shared-hosting.php
+No syntax errors detected in ./content/blog/cpanel-file-manager-http-406-modsecurity.php
+No syntax errors detected in ./content/blog/deploying-php-on-litespeed-shared-hosting.php
+No syntax errors detected in ./content/blog/php-shared-hosting-deployment-checklist.php
+No syntax errors detected in ./content/blog/search-console-domain-verification-dns-txt.php
+No syntax errors detected in ./content/blog/triaging-production-incidents.php
+No syntax errors detected in ./data/blog.php
+No syntax errors detected in ./data/portfolio.php
+No syntax errors detected in ./data/project-details.php
+No syntax errors detected in ./data/tech.php
+No syntax errors detected in ./engineering-principles.php
+No syntax errors detected in ./experience.php
+No syntax errors detected in ./includes/about.php
+No syntax errors detected in ./includes/breadcrumbs.php
+No syntax errors detected in ./includes/config.php
+No syntax errors detected in ./includes/contact-section.php
+No syntax errors detected in ./includes/experience.php
+No syntax errors detected in ./includes/footer.php
+No syntax errors detected in ./includes/header.php
+No syntax errors detected in ./includes/hero.php
+No syntax errors detected in ./includes/projects-section.php
+No syntax errors detected in ./includes/seo.php
+No syntax errors detected in ./includes/tech-stack.php
+No syntax errors detected in ./index.php
+No syntax errors detected in ./now.php
+No syntax errors detected in ./open-source.php
+No syntax errors detected in ./project-page.php
+No syntax errors detected in ./projects.php
+No syntax errors detected in ./resume.php
+No syntax errors detected in ./router.php
+No syntax errors detected in ./services.php
+No syntax errors detected in ./tech-page.php
+No syntax errors detected in ./tech-stack.php
+No syntax errors detected in ./uses.php
+
+Total PHP files: 41
+Files with errors: 0
