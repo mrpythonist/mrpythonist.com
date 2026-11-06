@@ -1,152 +1,207 @@
-# mrpythonist — Personal Portfolio (PHP)
+# mrpythonist.com
 
-Production-ready, SEO-optimised personal portfolio for **Muhammad Aqib (@mrpythonist)**,
-Software Engineer in Multan, Punjab, Pakistan.
+Personal portfolio and blog of Muhammad Aqib, software engineer from Multan, Punjab, Pakistan. Live at https://mrpythonist.com.
 
-Built with **PHP, semantic HTML5, CSS3 and vanilla JavaScript only** — no frameworks,
-no build step, no third-party scripts, no database. It reproduces the reference layout
-(hero with terminal illustration, featured projects, tech stack, experience / about /
-contact) in the mandated palette: forest green `#09251C`, burnt amber `#A55704`,
-warm peach `#F3D2AF`, soft beige `#F8EADC`. No blue, cyan or purple accents are used.
+A no-framework PHP site: plain PHP, semantic HTML, one stylesheet, a small vanilla JavaScript file. No framework, no build step, no database, no third-party scripts. Content lives in PHP data files, not a CMS.
 
-## What is deliberately NOT here
+## What the site is
 
-- **No fake contact form.** A form that does not deliver mail would be misleading.
-  Contact is via the verified GitHub / LinkedIn links and email address.
-- **No invented metrics, testimonials, awards or project URLs.** The Cloud & DevOps
-  Lab is labelled a learning lab, and the Food Delivery System is labelled in development.
-- **No fake test scores or indexing claims.** See "Test results" below for what was
-  actually measured, and what was not.
+- A portfolio: home, projects, experience, tech stack, services, resume, certifications, open source, cloud and DevOps notes, engineering principles, uses, and now pages.
+- A blog: short technical notes written from real experience, mostly about PHP deployment, shared hosting, clean URLs, SEO, and production incidents.
+- A contact page: a form plus direct email, GitHub, and LinkedIn links. Read the contact note below before assuming the form delivers mail.
 
-## Requirements
+## Pages
 
-- PHP 8.1+ (any SAPI; Apache/Nginx with PHP-FPM in production)
-- No Composer packages, no Node.js, no database
+Top-level pages, each with its own title, description, and canonical URL:
 
-## Local development
+| Path | Page |
+| --- | --- |
+| `/` | Home: hero, featured projects, tech stack, experience, about, contact |
+| `/about` | About |
+| `/experience` | Professional experience |
+| `/tech-stack` | Tech stack overview |
+| `/services` | Services |
+| `/projects` | Project list |
+| `/resume` | Resume |
+| `/certifications` | Certifications and badges |
+| `/open-source` | Open source work |
+| `/cloud` | Cloud and DevOps |
+| `/engineering-principles` | Engineering principles |
+| `/uses` | Tools and workflow |
+| `/now` | Current focus |
+| `/blog` | Blog index |
+| `/contact` | Contact |
+
+Detail pages use slug dispatchers:
+
+- `/projects/{slug}`: 3 projects (`food-delivery-system`, `backend-engineering-api-systems`, `cloud-devops-lab`). Data in `data/portfolio.php` and `data/project-details.php`, rendered by `project-page.php`.
+- `/tech-stack/{slug}`: 15 technology pages (PHP, Laravel, JavaScript, TypeScript, React, Next.js, Node.js, Express, PostgreSQL, MongoDB, Redis, Docker, AWS, Linux, Terraform). Data in `data/tech.php`, rendered by `tech-page.php`. Each page states an honest experience level: production, professional, working familiarity, or currently learning.
+- `/blog/{slug}`: 6 published posts. See "Blog publishing workflow" below.
+
+Unknown paths and unknown slugs return a genuine 404 through `404.php`.
+
+## Tech stack
+
+- PHP 8.1+ (production runs PHP 8.2 on HosterPK shared hosting; verified locally on PHP 8.3 CLI)
+- Semantic HTML5, CSS3, vanilla JavaScript
+- Apache with `mod_rewrite` on the live host (LiteSpeed); `nginx.conf.example` is a starting point for Nginx
+- No Composer packages, no Node.js, no database, no framework
+
+Design: forest green `#09251C`, burnt amber `#A55704`, warm peach `#F3D2AF`, soft beige `#F8EADC`. System font stack, no webfont downloads, no third-party requests.
+
+## Prerequisites
+
+- PHP 8.1 or newer with the CLI (`php -v` to check). No other tooling is needed.
+- Optional: a local Apache/Nginx setup if you want to test server rewrite rules instead of the built-in server router.
+
+## Local setup
 
 ```bash
-cd mrpythonist-portfolio
+git clone https://github.com/mrpythonist/mrpythonist.com.git
+cd mrpythonist.com
 php -S localhost:8000 router.php
-# Open http://localhost:8000/  — clean URLs /projects and /contact work via router.php
 ```
 
-Without a router, the direct files also work: `index.php`, `projects.php`, `contact.php`.
+Open http://localhost:8000/. Clean URLs such as `/projects` and `/blog` work through `router.php`, which exists only for the built-in server. Apache uses rewrite rules on the host instead; this file is never executed on the live server.
 
-## Structure
+Direct files also work without the router: `index.php`, `projects.php`, `contact.php`, and the rest.
+
+## Deployment
+
+The live site runs on HosterPK shared hosting (cPanel, PHP 8.2, LiteSpeed). Deploy by uploading the contents of this folder to `public_html/`, not the folder itself.
+
+1. Take a backup of the live site first.
+2. Upload the changed files to `public_html/`.
+3. Confirm PHP is enabled for the directory. If PHP shows as text or pages are blank, PHP is not enabled; check the hosting PHP version and handler, not this code.
+4. Confirm clean URLs work. There is no root `.htaccess` committed in this repo, so the live host keeps its own rewrite rules for clean URLs, canonical HTTPS host, and the 404 page. Do not assume the rules in this repo cover Apache; `router.php` is local only and `nginx.conf.example` is a starting point, not a live server block.
+5. After upload, check that `https://mrpythonist.com/robots.txt` and `https://mrpythonist.com/sitemap.xml` return HTTP 200 and contain no localhost or staging URLs.
+6. Bump `ASSET_VERSION` in `includes/config.php` when CSS, JS, or images change, to bust the long-lived browser cache. Or hard-refresh in the browser.
+7. If an older `index.html` exists in `public_html/`, it takes precedence over `index.php`. Remove it.
+
+The canonical domain is configured once in `includes/config.php` (`https://mrpythonist.com`). Canonical URLs, Open Graph URLs, and sitemap entries are built from it. Do not hardcode the domain elsewhere.
+
+Notes from running this site on shared hosting:
+
+- `php.ini` in this repo is the cPanel-generated file. It sets the error log path on the host. Edit PHP settings through the cPanel MultiPHP INI Editor, not by editing that file by hand.
+- The host WAF (ModSecurity) has rejected File Manager uploads containing script tags with HTTP 406. Use the cPanel code editor, Terminal, or FTP for those files. See the blog post `/blog/cpanel-file-manager-http-406-modsecurity`.
+- Re-zipping on some systems drops hidden files. Verify dotfiles (`.htaccess` files in `includes/`, `data/`, and `content/`) are present after any upload.
+
+## Project structure
 
 ```text
-index.php / projects.php / contact.php / 404.php   # pages (unique titles + descriptions)
-router.php                                          # clean URLs for php -S only
-includes/config.php                                 # domain, links, URL helpers — edit domain here only
-includes/seo.php                                    # <head> metadata + JSON-LD (Person / WebSite / WebPage)
-includes/header.php / footer.php                    # shared chrome + navigation
-includes/hero.php / projects-section.php / tech-stack.php
-       / experience.php / about.php / contact-section.php
-data/portfolio.php                                  # projects, tech stack, experience (no metrics)
-assets/css/style.css  assets/js/main.js             # single stylesheet, tiny menu script
-assets/images/og-image.png                          # 1200×630 Open Graph image (original, palette-matched)
-robots.txt  sitemap.xml  sitemap.xsl  humans.txt
-.htaccess                                           # Apache: clean URLs, 404, canonical HTTPS host, caching
-nginx.conf.example                                  # Nginx equivalent (adapt root + PHP-FPM socket)
+index.php, about.php, experience.php, ...   # one file per top-level page
+404.php                                     # genuine 404 page
+blog.php                                    # blog index (lists published posts)
+blog-post.php                               # dispatcher for /blog/{slug}
+project-page.php                            # dispatcher for /projects/{slug}
+tech-page.php                               # dispatcher for /tech-stack/{slug}
+router.php                                  # clean URLs for php -S only
+includes/
+  config.php                                # domain, links, URL helpers, ASSET_VERSION
+  seo.php                                   # <head> metadata + JSON-LD (Person, WebSite, WebPage)
+  header.php, footer.php                    # shared page chrome and navigation
+  hero.php, projects-section.php,           # home page sections
+  tech-stack.php, experience.php,
+  about.php, contact-section.php
+  breadcrumbs.php                           # breadcrumbs + JSON-LD
+data/
+  portfolio.php                             # projects, tech stack summary, experience
+  tech.php                                  # 15 technology detail pages
+  project-details.php                       # project detail content
+  blog.php                                  # blog post metadata (see below)
+content/blog/{slug}.php                     # blog post bodies (HTML in $post_body)
+assets/css/style.css                        # single stylesheet
+assets/js/main.js                           # small menu script
+assets/images/                            # favicon, Open Graph image, tech icons
+robots.txt, sitemap.xml, sitemap.xsl        # SEO files (sitemap is static; update by hand)
+humans.txt                                  # site credits
+nginx.conf.example                          # Nginx starting point (adapt root and PHP-FPM socket)
+php.ini                                     # cPanel-generated PHP settings (see deployment notes)
+mrpythonist.zip                             # old deployment archive, kept for reference
 ```
 
-## Production domain
+Direct web access to `includes/`, `data/`, and `content/` is denied by the `.htaccess` files inside each of those directories, and by `robots.txt`. The data files also return 404 if requested directly as scripts.
 
-Canonical domain is configured once in `includes/config.php`:
-`https://mrpythonist.com`. Canonical URLs, Open Graph URLs and sitemap entries are
-all built from it — do not hardcode the domain elsewhere. The sitemap `lastmod`
-values are the build date (2026-10-28); update them only when a page actually changes.
+## Blog publishing workflow
 
-## Apache deployment (e.g. HosterPK shared hosting)
+Blog posts have two parts:
 
-1. Upload the contents of this folder to `public_html/` (not the folder itself,
-   unless you want the site at `mrpythonist.com/mrpythonist-portfolio/`).
-2. Confirm PHP is enabled and `.htaccess` is honoured. `.htaccess` forces
-   `https://mrpythonist.com`, redirects `/projects.php` → `/projects`, and serves
-   `404.php` with a real 404 status.
-3. Check `https://mrpythonist.com/robots.txt` and `https://mrpythonist.com/sitemap.xml`
-   return HTTP 200 and contain no localhost/staging URLs.
+1. Metadata in `data/blog.php`: an entry in the `$posts` array with `slug`, `title`, `date`, `description`, `tags`, and `status`. Only `status => 'published'` posts appear in the index and the sitemap. Use `status => 'draft'` to keep a post out entirely.
+2. Body in `content/blog/{slug}.php`: the article HTML, assigned to `$post_body`.
 
-## Nginx deployment
+To publish a post:
 
-Use `nginx.conf.example` as a starting point: set `root` to the uploaded folder,
-point `fastcgi_pass` at your PHP-FPM socket, test with `nginx -t`, then reload.
-`.htaccess` does nothing under Nginx — do not rely on it there.
+1. Add the metadata entry to `data/blog.php` with `status => 'published'`.
+2. Create `content/blog/{slug}.php` with the article body. The slug must match the metadata entry and contain only lowercase letters, digits, and hyphens.
+3. Add the post URL to `sitemap.xml` with the publish date as `lastmod`.
+4. Run `php -l` on both files and load the post locally (`/blog/{slug}`) plus the index (`/blog`) before deploying.
+5. Upload and verify the live URL returns 200.
 
-## HTTPS
+`blog-post.php` validates the slug format, looks the post up with `find_post()`, and serves a genuine 404 for unknown slugs. It also redirects the old query-string form (`/blog-post.php?slug=x`) to the clean URL with a 301. Reading time is estimated from the body word count at 220 words per minute.
 
-HosterPK already serves mrpythonist.com over HTTPS. Keep the `.htaccess` HTTPS
-redirect in place; mixed-content and non-canonical host variants will otherwise
-split indexing between http/www/apex versions.
+There is an automated daily blog publisher (a cron job, not part of this repo) that adds posts from a topic log. It publishes one post per day, from real experience only, and verifies the saved file after writing. If a post ever breaks the blog, the fix is to restore `data/blog.php` from the pre-edit backup and re-verify every `/blog/{slug}` URL.
 
-## Google Search Console (indexing readiness — not a guarantee)
+## Contact form: read this before relying on it
 
-1. Add the property `https://mrpythonist.com` in Search Console.
-2. Verify ownership with a supported method (DNS TXT or HTML file). **No
-   verification token is included in this repo** — add the real value only when
-   Google issues one, e.g. as a `<meta name="google-site-verification">` tag in
-   `includes/seo.php`, and remove it from any public example afterwards if you prefer.
-3. Submit `https://mrpythonist.com/sitemap.xml` under Sitemaps.
-4. Use URL Inspection to request indexing for `/`, `/projects` and `/contact`.
-5. Watch Page Indexing for canonical-selection / crawl errors, and Core Web Vitals
-   once real-user field data exists. A brand-new site typically has no field data yet;
-   lab Lighthouse scores are not field Core Web Vitals.
+`contact.php` contains a real form. It validates input, checks a CSRF token, uses a honeypot field, rate-limits to one submission per minute per session, strips newlines from the reply-to address to block header injection, and attempts delivery with PHP `mail()` to the address in `CONTACT_EMAIL` (`includes/config.php`).
 
-## Updating content
+Delivery depends entirely on the host mail setup. `mail()` has failed on the live shared host before, and the code is written to show an error in that case instead of a false success. Do not claim the form works until you have tested a submission on the live host after a deploy. The mailto link in the contact section always works as a fallback, and GitHub and LinkedIn links are on the same page.
 
-Edit `data/portfolio.php` for projects / stack / experience, and the `about.php`
-copy for the About text. Page titles and descriptions live in each page file's
-`$page` array. After adding a page, add its canonical URL to `sitemap.xml` and
-to the navigation if it should be discoverable.
+## SEO
 
-## Performance notes
+- Unique title, description, and canonical URL per page, rendered by `includes/seo.php`.
+- JSON-LD: Person and WebSite on the home page, WebPage and BreadcrumbList elsewhere, ItemList on the blog index, Article data on posts.
+- Static `sitemap.xml` with 39 URLs and `lastmod` dates. Update `lastmod` only when a page actually changes. The sitemap is static, so new pages and posts must be added by hand.
+- `robots.txt` allows `/`, disallows `/includes/`, `/data/`, `/content/`, and lists the sitemap.
+- Google Search Console verification is by DNS TXT record, so no verification token is committed in this repo.
 
-- One small stylesheet, one tiny deferred script, system font stack (no webfont
-  download), CSS-only project-card visuals (no above-the-fold images to block LCP),
-  no third-party requests. That is the whole performance strategy — it keeps LCP
-  to text rendering and CLS near zero, and INP to a single menu toggle.
-- Long-lived caching for versioned CSS/JS/PNG is set in `.htaccess` / Nginx example;
-  bump `ASSET_VERSION` in `config.php` when assets change.
+## Testing and verification
 
-## Test results
+No test suite exists. Verification is manual, against the built-in server:
 
-<!-- Filled in after the verification run on 2026-10-28; do not edit scores by hand. -->
+```bash
+# Syntax check every PHP file (41 files)
+find . -name "*.php" -exec php -l {} \;
 
-- PHP syntax: every `.php` file parses cleanly with a modern PHP 8 parser
-  (16/16 files). `php -l` itself could not be run in this VM because `php-cli`
-  is not installed and the apt mirror was too slow to install it, so execution
-  was verified instead with a real PHP 8.3 runtime (WebAssembly build):
-  `index.php`, `projects.php` and `contact.php` each rendered with no warnings
-  or errors, and `404.php` rendered with HTTP status 404.
-  Rendered sizes: home 9,694 bytes, projects 7,954, contact 4,883, 404 4,254.
-- HTTP: from that PHP 8.3 execution, home/projects/contact return 200 and the
-  404 page returns 404. `robots.txt` and `sitemap.xml` are static files (valid
-  XML checked for the sitemap); they were not served over HTTP in this VM, so
-  confirm they return 200 after upload. The `router.php` clean-URL mapping was
-  parsed but not live-tested via `php -S` for the same reason — test
-  `http://localhost:8000/projects` locally before relying on it.
-- SEO: unique titles/descriptions/canonicals per page; JSON-LD parses as valid JSON
-  and contains Person + WebSite + WebPage; sitemap parses as valid XML with only
-  canonical HTTPS URLs; `robots.txt` allows `/` and lists the sitemap.
-- Accessibility: single H1 per page, nested H2/H3, skip link, visible focus
-  indicators, keyboard-operable mobile menu, `prefers-reduced-motion` respected.
-  Contrast was checked programmatically: beige on forest green 13.76:1 and peach
-  on forest green 11.33:1 (both pass AA for normal text); beige on the amber
-  button background is 4.49:1 (passes AA for large/bold text — amber is not used
-  for small body text on forest green).
-- **Not yet measured, and not claimed:** Lighthouse / PageSpeed scores and
-  real-user Core Web Vitals. Those require the deployed production URL and, for
-  field data, real traffic. Run Lighthouse against the deployed site (mobile +
-  desktop) before claiming any score.
+# Serve locally and check routes
+php -S localhost:8000 router.php
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8000/
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8000/blog
+```
+
+Verified locally on 2026-11-06 with PHP 8.3 CLI (see `docs/screenshots/` for the captured output):
+
+- `php -l`: all 41 PHP files parse cleanly.
+- HTTP 200: `/`, `/projects`, `/about`, `/experience`, `/tech-stack`, `/services`, `/resume`, `/certifications`, `/open-source`, `/cloud`, `/engineering-principles`, `/uses`, `/now`, `/blog`, `/contact`, `/blog/deploying-php-on-litespeed-shared-hosting`, `/projects/food-delivery-system`, `/tech-stack/php`, `/robots.txt`, `/sitemap.xml`.
+- HTTP 404 (genuine, with the 404 page): `/nonexistent-page`, `/blog/no-such-post`.
+
+Not yet measured, and not claimed: Lighthouse or PageSpeed scores, and real-user Core Web Vitals. Those need the deployed production URL and real traffic.
 
 ## Troubleshooting
 
-- **Blank page / PHP shown as text:** PHP is not enabled for that directory —
-  check hosting PHP version and handler, not this code.
-- **Clean URLs 404 on Apache:** `.htaccess` is being ignored — enable
-  `AllowOverride All` for the document root (or ask the host).
-- **CSS not updating:** bump `ASSET_VERSION` in `includes/config.php` to bust
-  the 1-year cache, or hard-refresh.
-- **Old site still showing after upload:** confirm files went to `public_html/`
-  itself, and that no older `index.html` is taking precedence over `index.php`.
+- Blank page or PHP shown as text: PHP is not enabled for that directory. Check the hosting PHP version and handler.
+- Clean URLs return 404 on Apache: the host rewrite rules are missing or ignored. Check that `.htaccess` is honoured (`AllowOverride All`) for the document root, or ask the host.
+- CSS or JS not updating: bump `ASSET_VERSION` in `includes/config.php`, or hard-refresh.
+- Old site still showing after upload: confirm files went to `public_html/` itself, and that no older `index.html` takes precedence over `index.php`.
+- Contact form shows an error after submit: the host could not deliver mail. Email directly using the mailto link on the contact page.
+- Blog post 500s or a blank blog page: check `data/blog.php` syntax first (`php -l`), then restore it from the pre-edit backup if a publish step corrupted it, then re-verify every blog URL.
+
+## Roadmap
+
+- Add a root `.htaccess` to the repo so the live Apache rewrite rules are versioned instead of host-only (currently the repo has none; the host holds the live copy).
+- Automate sitemap generation from `data/blog.php` and the page list instead of editing `sitemap.xml` by hand.
+- Add a CI check that runs `php -l` on every PHP file (prepared in `.github/workflows/ci.yml`, needs upload through the GitHub web UI).
+- Verify the contact form end to end on the live host, or replace `mail()` with a transactional mail provider if the host cannot deliver reliably.
+- Lighthouse run against the deployed site, mobile and desktop, before claiming any performance score.
+
+## Contributing
+
+This is a personal portfolio site. Contributions are welcome for bug fixes, typo corrections, broken links, and accessibility improvements. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Support
+
+See [SUPPORT.md](SUPPORT.md) for how to get help or report a problem.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
