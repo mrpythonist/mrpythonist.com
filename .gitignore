@@ -1,0 +1,33 @@
+# Environment and secrets (never commit these)
+.env
+.env.*
+!.env.example
+
+# PHP and server logs
+*.log
+logs/
+
+# Build and deployment artifacts
+# Note: mrpythonist.zip is already tracked in this repo and stays tracked;
+# this rule only stops new archives from being added by accident.
+*.zip
+*.tar.gz
+
+# Dependency and tool directories (this project has none today)
+vendor/
+node_modules/
+
+# Editor and IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local test and scratch files
+/tmp/
+*.bak
+*.tmp
