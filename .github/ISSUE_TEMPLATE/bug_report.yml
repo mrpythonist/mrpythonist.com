@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a bug, broken link, or rendering problem on mrpythonist.com
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please fill in what you can. If the problem is on the live site, include the page URL.
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: The page where the problem happens, for example https://mrpythonist.com/blog
+      placeholder: https://mrpythonist.com/...
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you saw, including any error message.
+      placeholder: The page returns a 404 / the layout breaks / the form shows an error...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: What the page should have done instead.
+    validations:
+      required: false
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The shortest steps that show the problem.
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: false
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      description: Browser, version, and device or OS, if relevant.
+      placeholder: Firefox 140 on Linux
+    validations:
+      required: false
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Screenshots, PHP version if you run the site locally, or other context.
+    validations:
+      required: false
