@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest an improvement to mrpythonist.com
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a personal portfolio site, so design and content decisions stay with the owner. Small fixes and accessibility improvements are the most likely to be accepted.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the problem, not just the solution.
+      placeholder: The sitemap has to be edited by hand every time a post is added...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What you suggest, in as much detail as you have.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Any other way to solve the same problem.
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      description: Please confirm the proposal fits this repo.
+      options:
+        - label: This does not add a framework, build tool, dependency, analytics, or tracking.
+        - label: This does not change personal content (bio, experience, projects, resume) without discussion.
+        - label: I am willing to implement this, or I am only suggesting it.
