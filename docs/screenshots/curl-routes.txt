@@ -1,0 +1,24 @@
+Local route check - 2026-11-06 - PHP built-in server (php -S 127.0.0.1:8125 router.php)
+
+/ -> 200 50966 bytes | Muhammad Aqib | Software Engineer &amp; Backend Developer
+/projects -> 200 29353 bytes | Projects | Muhammad Aqib — Software Engineer
+/about -> 200 26861 bytes | About Muhammad Aqib | Software Engineer
+/experience -> 200 27117 bytes | Professional Experience | Muhammad Aqib
+/tech-stack -> 200 97174 bytes | Tech Stack | Muhammad Aqib, Software Engineer
+/services -> 200 25657 bytes | Services | Muhammad Aqib — Full-Stack &amp; Backend Development
+/resume -> 200 51869 bytes | Resume | Muhammad Aqib, Software Engineer
+/certifications -> 200 26852 bytes | Certifications &amp; Badges | Muhammad Aqib
+/open-source -> 200 25097 bytes | Open Source | Muhammad Aqib
+/cloud -> 200 32988 bytes | Cloud &amp; DevOps | Muhammad Aqib
+/engineering-principles -> 200 33945 bytes | Engineering Principles | Muhammad Aqib
+/uses -> 200 27651 bytes | Uses | Tools &amp; Workflow of Muhammad Aqib
+/now -> 200 24862 bytes | Now | What Muhammad Aqib Is Focused On
+/blog -> 200 26211 bytes | Blog | Muhammad Aqib — Notes on Backend, PHP &amp; DevOps
+/contact -> 200 17487 bytes | Muhammad Aqib | Contact
+/blog/deploying-php-on-litespeed-shared-hosting -> 200 18621 bytes | Deploying a no-framework PHP site on LiteSpeed shared hosting | Muhammad Aqib
+/projects/food-delivery-system -> 200 29288 bytes | Food Delivery System | Muhammad Aqib
+/tech-stack/php -> 200 24549 bytes | PHP | Muhammad Aqib, Software Engineer
+/robots.txt -> 200 127 bytes | 
+/sitemap.xml -> 200 3940 bytes | 
+/nonexistent-page -> 404 12295 bytes | Page Not Found | Muhammad Aqib
+/blog/no-such-post -> 404 12295 bytes | Page Not Found | Muhammad Aqib
